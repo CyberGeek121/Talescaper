@@ -246,3 +246,15 @@
         darkModeToggle.textContent = '☀️';
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const authorLink = document.getElementById('author-link');
+    const authorPreview = document.getElementById('author-preview');
+
+    authorLink.addEventListener('mouseenter', function() {
+        authorPreview.classList.add('show');
+    });
+
+    authorLink.addEventListener('mouseleave', function() {
+        authorPreview.classList.remove('show');
+    });
+});
