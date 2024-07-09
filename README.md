@@ -7,10 +7,13 @@ Changes after 1st update (08-07-2024):
 2.) Replaced texts as placeholder for ease in use.
 3.) Optimized for mobile devices.
 Changes I want to make in the next update (expect by 14-15 cause of exams): 
-1.)Add a hide button for progress bar.
-2.)Add a button to replay the story
+1.)Add a hide button for progress bar. (Done)
+2.)Add a button to replay the story (Done)
 3.)Add my social media handles.
-4.) Seperate Js and Css and link them externally.
+4.) Seperate Js and Css and link them externally. (Done)
+5.) Fix the looping issue in interaction menu when no option is assigned to any part.
+6.) Remove the horizontal scrall bar.
+7.) Add the ability to change part names.
 Changes potentially coming if I am able to figure things out:
 1.) Add a global chat (kind of) integrated to the page, so that people may interact and help each other.
 2.)Add a place where people may share their projects online.
