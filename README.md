@@ -14,6 +14,7 @@ Changes I want to make in the next update (expect by 14-15 cause of exams):
 5.) Fix the looping issue in interaction menu when no option is assigned to any part.
 6.) Remove the horizontal scrall bar.
 7.) Add the ability to change part names.
+8.) Better parralax in Dark mode.
 Changes potentially coming if I am able to figure things out:
 1.) Add a global chat (kind of) integrated to the page, so that people may interact and help each other.
 2.)Add a place where people may share their projects online.
