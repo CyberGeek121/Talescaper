@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Piyush Bhardwaj">
+    <title>TaleScaper</title>
+    <link rel="icon" href="images.png">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="parallax">
+        <div class="parallax__layer parallax__layer--back"></div>
+        <div class="parallax__layer parallax__layer--base">
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="title-container">
+                        <h1>TaleScaper<a class="reload" href="https://cybergeek121.github.io/Talescraper/" style="color: #2980b9; text-decoration: none;">.</a></h1>
+                        <a href="#" class="author" id="author-link">~by Piyush Bhardwaj</a>
+                        <div class="author-preview" id="author-preview">
+                            <h3>About Piyush Bhardwaj</h3>
+                            <p>A 15 year old developer. With the help of this page, you can create complex non-linear stories with limitless possibilities. This page was made through numerous iterations with the help of AI. It may be overwhelming currently, but updates are on the way.</p>
+                            <p>GitHub: <a href="https://github.com/CyberGeek121" target="_blank">github.com/CyberGeek121</a></p>
+                        </div>
+                    </div>
+                    <div>
+                        <button id="mode-toggle" class="btn">Switch to Play Mode</button>
+                        <button id="reset-btn" class="btn">Reset</button>
+                        <button id="save-btn" class="btn">Save</button>
+                        <button id="load-btn" class="btn">Load</button>
+                        <button id="dark-mode-toggle" class="dark-mode-btn">🌙</button>
+                        <input type="file" id="file-input" accept=".json">
+                    </div>
+                    
+                    <div id="creator-mode">
+                        <h2>Story Creator Mode</h2>
+                        <div id="story-structure"></div>
+                        <button id="add-part-btn" class="btn">Add New Part</button>
+                    </div>
+
+                    <div id="player-mode" class="hidden">
+                        <h2>Story Player Mode</h2>
+                        <div class="player-controls">
+                            <span id="toggle-progress">Show Progress</span>
+                            <button id="replay-story" title="Replay Story">↺</button>
+                        </div>
+                        <div id="main-container">
+                            <div id="story-container">
+                                <div id="progress-container" style="display: none;">
+                                    <div id="progress-bar"><div id="progress"></div></div>
+                                    <div id="progress-text">Part 1</div>
+                                </div>
+                                <div id="story-text"></div>
+                                <div id="choices"></div>
+                                <div id="final-story"></div>
+                            </div>
+                            <div id="history-container">
+                                <h3>Interaction History</h3>
+                                <div id="history-text"></div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
