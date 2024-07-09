@@ -213,9 +213,7 @@
 
         .title-container {
             position: relative;
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 30px;
+            margin-top:20px;
         }
 
         .author {
@@ -234,20 +232,26 @@
         .author-preview {
             display: none;
             position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: white;
+            top: 100%;
+            left: 0;
+            width: 250px;
+            background-color: #f9f9f9;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            z-index: 1000;
-            width: 250px;
-            text-align: left;
+            z-index: 1;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-
+        .author-preview.show {
+            display: block;
+        }
         .author-preview h3 {
             margin-top: 0;
+            color: #333;
+        }
+        .author-preview p {
+            font-size: 0.9em;
+            line-height: 1.4;
         }
         p {
             font-size: 13px;
