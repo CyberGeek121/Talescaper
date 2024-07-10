@@ -1,4 +1,4 @@
-     document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
     const modeToggle = document.getElementById('mode-toggle');
     const creatorMode = document.getElementById('creator-mode');
@@ -19,6 +19,7 @@
     const toggleProgressBtn = document.getElementById('toggle-progress');
     const progressContainer = document.getElementById('progress-container');
     const replayBtn = document.getElementById('replay-story');
+    const content = document.querySelector('.content');
 
     // State
     let storyParts = [{ text: '', choices: [] }];
@@ -99,23 +100,31 @@
     function updateStory() {
         const part = storyParts[currentPart];
         storyText.innerHTML = part.text;
-        choicesContainer.innerHTML = part.choices.map((choice, index) => `
-            <button class="btn choice-btn" data-choice="${index}">${choice.text}</button>
-        `).join('');
+        choicesContainer.innerHTML = '';
 
-        document.querySelectorAll('.choice-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const choiceIndex = parseInt(e.target.dataset.choice);
-                history.push(`${part.text} (Choice: ${part.choices[choiceIndex].text})`);
-                updateHistory();
-                currentPart = part.choices[choiceIndex].nextPart;
-                if (currentPart < storyParts.length) {
-                    updateStory();
-                } else {
-                    endStory();
-                }
+        if (part.choices.length === 0) {
+            // If there are no choices, this is an ending
+            endStory();
+        } else {
+            part.choices.forEach((choice, index) => {
+                const choiceButton = document.createElement('button');
+                choiceButton.className = 'btn choice-btn';
+                choiceButton.textContent = choice.text;
+                choiceButton.addEventListener('click', () => {
+                    if (choice.nextPart === currentPart) {
+                        alert('This choice leads back to the same part. Please assign a different next part to avoid loops.');
+                    } else if (choice.nextPart >= storyParts.length) {
+                        alert('This choice leads to a non-existent part. Please create the next part or assign a valid existing part.');
+                    } else {
+                        history.push(`${part.text} (Choice: ${choice.text})`);
+                        updateHistory();
+                        currentPart = choice.nextPart;
+                        updateStory();
+                    }
+                });
+                choicesContainer.appendChild(choiceButton);
             });
-        });
+        }
 
         updateProgress();
     }
@@ -236,6 +245,15 @@
     replayBtn.addEventListener('click', resetPlayMode);
     darkModeToggle.addEventListener('click', toggleDarkMode);
 
+    // Mouse tracking for darkening effect
+    content.addEventListener('mousemove', (e) => {
+        const rect = content.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        content.style.setProperty('--mouse-x', `${x}px`);
+        content.style.setProperty('--mouse-y', `${y}px`);
+    });
+
     // Initialize
     updateStoryStructure();
     updateStory();
@@ -246,6 +264,8 @@
         darkModeToggle.textContent = '☀️';
     }
 });
+
+// Author preview functionality
 document.addEventListener('DOMContentLoaded', function() {
     const authorLink = document.getElementById('author-link');
     const authorPreview = document.getElementById('author-preview');
@@ -257,4 +277,18 @@ document.addEventListener('DOMContentLoaded', function() {
     authorLink.addEventListener('mouseleave', function() {
         authorPreview.classList.remove('show');
     });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // ... (existing code)
+
+    const content = document.querySelector('.content');
+    content.addEventListener('mousemove', (e) => {
+        const rect = content.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        content.style.setProperty('--mouse-x', `${x}px`);
+        content.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    // ... (rest of the existing code)
 });
