@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
     const modeToggle = document.getElementById('mode-toggle');
     const creatorMode = document.getElementById('creator-mode');
