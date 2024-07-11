@@ -44,6 +44,7 @@ body, html {
   background-color: var(--background-primary);
   transition: background-color 0.3s, color 0.3s;
   overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* Custom Scrollbar */
@@ -61,12 +62,11 @@ body, html {
 }
 
 .parallax {
-  height: 100%;
-  overflow-x: hidden;
+  height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
   perspective: 1px;
 }
-
 .parallax__layer {
   position: absolute;
   top: 0;
@@ -104,7 +104,7 @@ body, html {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-  background-color: var(--background-secondary);
+  background-color: rgba(255, 255, 255, 0.9); /* Make it slightly translucent in light mode */
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -112,7 +112,9 @@ body, html {
   position: relative;
 }
 
+
 .dark-mode .content {
+  background-color: var(--background-secondary); /* Keep it solid in dark mode */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -296,7 +298,8 @@ body, html {
 }
 
 .part-text {
-  height: 100px;
+  width: 100%;
+  margin-top: 5px;
 }
 
 .next-part-select {
@@ -462,4 +465,74 @@ p {
     font-size: 0.8em;
     padding: 6px 12px;
   }
+}
+.part-name {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.edit-part-name {
+  background-color: transparent;
+  border: none;
+  color: var(--interactive-normal);
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 2px;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+  position: relative;
+}
+
+.edit-part-name:hover {
+  color: var(--interactive-hover);
+}
+.edit-part-name:active {
+  color: var(--interactive-active);
+}
+
+
+/* Add a tooltip-like effect for better UX */
+.edit-part-name::before {
+  content: 'Edit name';
+  position: absolute;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 5px;
+  white-space: nowrap;
+}
+.edit-part-name:hover::before {
+  opacity: 1;
+} 
+
+.edit-part-name::after {
+  content: 'Edit name';
+  position: absolute;
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7em;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  margin-left: 5px;
+}
+
+.edit-part-name:hover::after {
+  opacity: 1;
+}
+.story-part h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
