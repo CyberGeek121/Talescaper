@@ -12,6 +12,10 @@
   --brand-experiment-560: #4752c4;
   --progress-bar-color: #caced6;
   --background-modifier-accent: rgba(79,84,92,0.16);
+  --scrollbar-thin-thumb: rgba(79,84,92,0.3);
+  --scrollbar-thin-track: transparent;
+  --scrollbar-auto-thumb: rgba(79,84,92,0.3);
+  --scrollbar-auto-track: rgba(0,0,0,0.1);
 }
 
 .dark-mode {
@@ -26,6 +30,9 @@
   --brand-experiment-560: #5865f2;
   --progress-bar-color: #4f545c;
   --background-modifier-accent: rgba(79,84,92,0.32);
+  --scrollbar-thin-thumb: rgba(79,84,92,0.5);
+  --scrollbar-auto-thumb: rgba(79,84,92,0.5);
+  --scrollbar-auto-track: rgba(0,0,0,0.3);
 }
 
 body, html {
@@ -39,8 +46,22 @@ body, html {
   overflow-x: hidden;
 }
 
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-auto-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-auto-track);
+}
+
 .parallax {
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   perspective: 1px;
@@ -57,9 +78,11 @@ body, html {
 .parallax__layer--back {
   transform: translateZ(-1px) scale(2);
   background: linear-gradient(135deg, #2c3e50, #3498db, #2980b9);
-  height: 100vh;
-  width: 100vw;
+  height: 200%;
+  width: 200%; /* Increased width to cover entire viewport */
+  left: -50%; /* Offset to center the background */
 }
+
 
 .dark-mode .parallax__layer--back {
   background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
@@ -68,9 +91,16 @@ body, html {
 .content-wrapper {
   position: relative;
   z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
 }
 
 .content {
+  width: 100%;
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
@@ -253,7 +283,7 @@ body, html {
 }
 
 .part-text, .choice-input {
-  width: 100%;
+  width: calc(100% - 22px); /* Adjust width to account for padding and border */
   padding: 10px;
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
@@ -262,6 +292,7 @@ body, html {
   border: 1px solid var(--background-modifier-accent);
   border-radius: 4px;
   resize: vertical;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 .part-text {
@@ -297,7 +328,6 @@ h1 {
 }
 
 .author-container {
-  position: relative;
   text-align: right;
   margin-top: 10px;
 }
@@ -307,7 +337,6 @@ h1 {
   color: var(--text-muted);
   font-style: italic;
   text-decoration: none;
-  margin-left: 800px;
 }
 
 .author:hover {
@@ -321,11 +350,12 @@ h1 {
   right: 0;
   width: 250px;
   background-color: var(--background-secondary);
-  border: 1px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding: 15px;
   z-index: 1;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: left;
 }
 
 .author-preview.show {
@@ -341,6 +371,7 @@ h1 {
   font-size: 0.9em;
   line-height: 1.4;
   color: var(--text-muted);
+  text-align: left;
 }
 
 p {
