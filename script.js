@@ -2,6 +2,29 @@
 // Includes all original features with improved error handling and structure
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Load data from local storage
+    function loadFromLocalStorage() {
+        const savedStoryParts = localStorage.getItem('storyParts');
+        const savedCurrentPart = localStorage.getItem('currentPart');
+        const savedHistory = localStorage.getItem('history');
+
+        if (savedStoryParts) {
+            storyParts = JSON.parse(savedStoryParts);
+        }
+        if (savedCurrentPart) {
+            currentPart = parseInt(savedCurrentPart, 10);
+        }
+        if (savedHistory) {
+            history = JSON.parse(savedHistory);
+        }
+    }
+
+    // Save data to local storage
+    function saveToLocalStorage() {
+        localStorage.setItem('storyParts', JSON.stringify(storyParts));
+        localStorage.setItem('currentPart', currentPart.toString());
+        localStorage.setItem('history', JSON.stringify(history));
+    }
     // DOM Elements
     const elements = {
         modeToggle: document.getElementById('mode-toggle'),
@@ -79,13 +102,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
 
         addStoryPartEventListeners();
+        saveToLocalStorage();
     }
 
     function addStoryPartEventListeners() {
         document.querySelectorAll('.part-text').forEach(textarea => {
-            textarea.addEventListener('change', (e) => {
+            textarea.addEventListener('input', (e) => {
                 const partIndex = Array.from(elements.storyStructure.children).indexOf(e.target.closest('.story-part'));
                 storyParts[partIndex].text = e.target.value;
+                saveToLocalStorage();
             });
         });
 
@@ -98,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         document.querySelectorAll('.choice-input, .next-part-select').forEach(element => {
-            element.addEventListener('change', (e) => {
+            element.addEventListener('input', (e) => {
                 const partIndex = parseInt(e.target.dataset.part);
                 const choiceIndex = parseInt(e.target.dataset.choice);
                 if (e.target.classList.contains('choice-input')) {
@@ -106,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     storyParts[partIndex].choices[choiceIndex].nextPart = parseInt(e.target.value);
                 }
+                saveToLocalStorage();
             });
         });
 
@@ -162,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
             history = [];
             updateStoryStructure();
             updateStory();
+            localStorage.clear();
         }
     }
 
@@ -174,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     storyParts = JSON.parse(e.target.result);
                     updateStoryStructure();
                     resetPlayMode();
+                    saveToLocalStorage();
                     alert('Story loaded successfully!');
                 } catch (error) {
                     console.error('Error parsing JSON:', error);
@@ -319,6 +347,10 @@ document.addEventListener('DOMContentLoaded', function() {
             elements.authorPreview.classList.remove('show');
         });
     }
+        // Initialize
+        loadFromLocalStorage();
+        updateStoryStructure();
+        updateStory();
 
     // Initialize
     updateStoryStructure();
