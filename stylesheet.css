@@ -588,3 +588,142 @@ p {
   transform: translateY(-1px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
+/* Add these styles to your stylesheet.css file */
+
+.menu-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-normal);
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: var(--background-secondary);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dropdown-menu a {
+  color: var(--text-normal);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--background-modifier-accent);
+  transform: translateX(5px);
+}
+
+.menu-button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+/* Dark mode styles */
+.dark-mode .menu-toggle {
+  color: var(--text-normal);
+}
+
+.dark-mode .dropdown-menu {
+  background-color: var(--background-secondary);
+}
+
+.dark-mode .dropdown-menu a {
+  color: var(--text-normal);
+}
+
+.dark-mode .dropdown-menu a:hover {
+  background-color: var(--background-modifier-accent);
+}
+
+.tutorial-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-content h1 {
+  color: var(--text-normal);
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.tutorial-content h2 {
+  color: var(--text-muted);
+  font-size: 1.8em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.tutorial-content p, .tutorial-content li {
+  line-height: 1.6;
+  color: var(--text-normal);
+}
+
+.tutorial-content ol, .tutorial-content ul {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.tutorial-content .btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  background-color: rgba(57, 124, 206, 0.719);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.tutorial-content .btn:hover {
+  background-color: rgba(63, 115, 179, 0.859);
+  padding-left: 21px;
+  padding-right: 21px;
+  transition: all 0.25s;
+}
+
+.tutorial-content .btn:active {
+  transform: translateY(1px);
+}
+
+.dark-mode .tutorial-content h1 {
+  color: var(--text-normal);
+  color: #6cadf6b3;
+}
+
+.dark-mode .tutorial-content h2 {
+  color: var(--text-muted);
+  color: #90afd6;
+}
+
+.dark-mode .tutorial-content .btn {
+  background-color: rgba(97, 95, 95, 0.566);
+}
+
+.dark-mode .tutorial-content .btn:hover {
+  background-color: rgba(97, 95, 95, 0.866);
+}

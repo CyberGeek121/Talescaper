@@ -371,3 +371,20 @@ styleElement.textContent = `
     }
 `;
 document.head.appendChild(styleElement);
+// Add this to your script.js file
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+  
+    menuToggle.addEventListener('click', function() {
+      dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+  
+    // Close the menu when clicking outside
+    window.addEventListener('click', function(event) {
+      if (!event.target.matches('.menu-toggle') && !event.target.closest('.dropdown-menu')) {
+        dropdownMenu.style.display = 'none';
+      }
+    });
+  });
