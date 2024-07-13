@@ -100,6 +100,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   padding: 20px;
+  min-height: auto;
 }
 
 .content {
@@ -726,4 +727,170 @@ p {
 
 .dark-mode .tutorial-content .btn:hover {
   background-color: rgba(97, 95, 95, 0.866);
+}
+/* Disable mouse darkening effect */
+.disable-darkening .content::before {
+  display: none;
+}
+.high-contrast.dark-mode .parallax {
+  perspective: none;
+}
+
+.high-contrast.dark-mode .parallax__layer--back {
+  display: none;
+}
+
+.high-contrast.dark-mode .content-wrapper {
+  min-height: auto;
+}
+.high-contrast.dark-mode {
+  --background-primary: #000000;
+  --background-secondary: #1a1a1a;
+  --text-normal: #ffffff;
+  --text-muted: #cccccc;
+  --interactive-normal: #564b4b;
+  --interactive-hover: #f0f0f0;
+  --interactive-active: #e0e0e0;
+  --brand-experiment: #4a90e2;
+  --brand-experiment-560: #3a75b5;
+  --progress-bar-color: #ffffff;
+  --background-modifier-accent: rgba(255,255,255,0.2);
+  --scrollbar-thin-thumb: rgba(255,255,255,0.3);
+  --scrollbar-auto-thumb: rgba(255,255,255,0.3);
+  --scrollbar-auto-track: rgba(0,0,0,0.3);
+  --button-background: #020e1c;
+  --button-text: #ffffff;
+  --button-hover-background: #24282c;
+  
+}
+
+.high-contrast.dark-mode .content {
+  background-color: var(--background-secondary);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1), 0 1px 8px rgba(255, 255, 255, 0.2);
+}
+
+.high-contrast.dark-mode .btn {
+  background-color: var(--brand-experiment);
+  color: #ffffff;
+}
+
+.high-contrast.dark-mode .btn:hover {
+  background-color: var(--brand-experiment-560);
+}
+
+.high-contrast.dark-mode #story-container,
+.high-contrast.dark-mode #history-container,
+.high-contrast.dark-mode #story-structure {
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.2);
+}
+
+.high-contrast.dark-mode .choice-btn {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.high-contrast.dark-mode .choice-btn:hover {
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.high-contrast.dark-mode .dropdown-menu {
+  background-color: var(--background-secondary);
+  box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.2);
+}
+
+.high-contrast.dark-mode .dropdown-menu a:hover {
+  background-color: var(--background-modifier-accent);
+}
+
+/* Ensure the content of story parts is visible in high contrast mode */
+.high-contrast.dark-mode .story-part,
+.high-contrast.dark-mode .part-text,
+.high-contrast.dark-mode .choice-input,
+.high-contrast.dark-mode .next-part-select {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border-color: var(--text-muted);
+}
+
+/* Adjust progress bar for high contrast */
+.high-contrast.dark-mode #progress-bar {
+  background-color: var(--background-modifier-accent);
+}
+
+.high-contrast.dark-mode #progress {
+  background-color: var(--progress-bar-color);
+}
+.high-contrast.dark-mode .btn {
+  background-color: var(--button-background);
+  color: var(--button-text);
+  border: 2px solid var(--button-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.high-contrast.dark-mode .btn:hover {
+  background-color: var(--button-hover-background);
+  color: var(--button-text);
+}
+
+/* Remove padding changes on hover */
+.high-contrast.dark-mode .btn:hover {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Choice button styles for high contrast mode */
+.high-contrast.dark-mode .choice-btn {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border: 2px solid var(--text-normal);
+  box-shadow: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.high-contrast.dark-mode .choice-btn:hover {
+  background-color: var(--text-normal);
+  color: var(--background-secondary);
+  transform: none;
+  box-shadow: none;
+}
+.high-contrast.dark-mode .choice-btn::before {
+  display: none;
+}
+.high-contrast.dark-mode #story-container,
+.high-contrast.dark-mode #history-container,
+.high-contrast.dark-mode #story-structure {
+  box-shadow: none;
+  border: 1px solid var(--text-muted);
+}
+
+.high-contrast.dark-mode .dropdown-menu {
+  background-color: var(--background-secondary);
+  box-shadow: none;
+  border: 1px solid var(--text-normal);
+}
+
+.high-contrast.dark-mode .dropdown-menu a:hover {
+  background-color: var(--text-normal);
+  color: var(--background-secondary);
+}
+
+/* Ensure the content of story parts is visible in high contrast mode */
+.high-contrast.dark-mode .story-part,
+.high-contrast.dark-mode .part-text,
+.high-contrast.dark-mode .choice-input,
+.high-contrast.dark-mode .next-part-select {
+  background-color: var(--background-secondary);
+  color: var(--text-normal);
+  border-color: var(--text-normal);
+}
+
+/* Adjust progress bar for high contrast */
+.high-contrast.dark-mode #progress-bar {
+  background-color: var(--background-modifier-accent);
+  border: 1px solid var(--text-normal);
+}
+
+.high-contrast.dark-mode #progress {
+  background-color: var(--progress-bar-color);
 }
