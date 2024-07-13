@@ -362,6 +362,61 @@ document.addEventListener('DOMContentLoaded', function() {
         if (elements.darkModeToggle) elements.darkModeToggle.textContent = '☀️';
     }
 });
+// Add this to your existing script.js file
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    
+    // Function to update menu options
+    function updateMenuOptions() {
+      if (document.body.classList.contains('dark-mode')) {
+        if (!document.getElementById('disable-darkening')) {
+          const disableDarkeningOption = document.createElement('a');
+          disableDarkeningOption.href = '#';
+          disableDarkeningOption.id = 'disable-darkening';
+          disableDarkeningOption.className = 'menu-button';
+          disableDarkeningOption.textContent = 'Disable Mouse Darkening';
+          dropdownMenu.appendChild(disableDarkeningOption);
+  
+          const highContrastOption = document.createElement('a');
+          highContrastOption.href = '#';
+          highContrastOption.id = 'high-contrast-mode';
+          highContrastOption.className = 'menu-button';
+          highContrastOption.textContent = 'High Contrast Mode';
+          dropdownMenu.appendChild(highContrastOption);
+        }
+      } else {
+        const disableDarkeningOption = document.getElementById('disable-darkening');
+        const highContrastOption = document.getElementById('high-contrast-mode');
+        if (disableDarkeningOption) dropdownMenu.removeChild(disableDarkeningOption);
+        if (highContrastOption) dropdownMenu.removeChild(highContrastOption);
+      }
+    }
+  
+    // Call updateMenuOptions when dark mode is toggled
+    darkModeToggle.addEventListener('click', function() {
+      // Your existing dark mode toggle logic here
+      // ...
+  
+      updateMenuOptions();
+    });
+  
+    // Event listeners for new options
+    dropdownMenu.addEventListener('click', function(e) {
+      if (e.target.id === 'disable-darkening') {
+        document.body.classList.toggle('disable-darkening');
+        e.target.textContent = document.body.classList.contains('disable-darkening') ? 'Enable Mouse Darkening' : 'Disable Mouse Darkening';
+      } else if (e.target.id === 'high-contrast-mode') {
+        document.body.classList.toggle('high-contrast');
+        e.target.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
+      }
+    });
+  
+    // Initial call to set up menu
+    updateMenuOptions();
+  });
 
 // Remove unwanted tooltip on the right
 const styleElement = document.createElement('style');
