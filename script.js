@@ -1,4 +1,4 @@
-// Improved Story Creator Script with Enhanced Undo Functionality
+// Improved Story Creator Script with Enhanced Undo Functionality and Bug Fixes
 
 document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
@@ -482,6 +482,19 @@ document.addEventListener('DOMContentLoaded', function() {
         if (actionData) applyAction(actionData);
     });
 
+    // Keyboard shortcuts for undo and redo
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key === 'z') {
+            e.preventDefault();
+            const actionData = undoRedoModule.undo();
+            if (actionData) applyAction(actionData);
+        } else if (e.ctrlKey && e.key === 'y') {
+            e.preventDefault();
+            const actionData = undoRedoModule.redo();
+            if (actionData) applyAction(actionData);
+        }
+    });
+
     // Mouse tracking for darkening effect
     if (elements.content) {
         elements.content.addEventListener('mousemove', (e) => {
@@ -494,42 +507,31 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Author preview functionality
-const authorLink = document.getElementById('author-link');
-const authorPreview = document.getElementById('author-preview');
+    const authorLink = document.getElementById('author-link');
+    const authorPreview = document.getElementById('author-preview');
 
-let previewTimeout;
+    let previewTimeout;
 
-authorLink.addEventListener('mouseenter', () => {
-    clearTimeout(previewTimeout);
-    authorPreview.style.display = 'block';
-});
+    authorLink.addEventListener('mouseenter', () => {
+        clearTimeout(previewTimeout);
+        authorPreview.style.display = 'block';
+    });
 
-authorLink.addEventListener('mouseleave', () => {
-    previewTimeout = setTimeout(() => {
-        if (!authorPreview.matches(':hover')) {
-            authorPreview.style.display = 'none';
-        }
-    }, 50);
-});
+    authorLink.addEventListener('mouseleave', () => {
+        previewTimeout = setTimeout(() => {
+            if (!authorPreview.matches(':hover')) {
+                authorPreview.style.display = 'none';
+            }
+        }, 50);
+    });
 
-authorPreview.addEventListener('mouseenter', () => {
-    clearTimeout(previewTimeout);
-});
+    authorPreview.addEventListener('mouseenter', () => {
+        clearTimeout(previewTimeout);
+    });
 
-authorPreview.addEventListener('mouseleave', () => {
-    authorPreview.style.display = 'none';
-});
-
-    // Initialize
-    loadFromLocalStorage();
-    updateStoryStructure();
-    updateStory();
-
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
-        if (elements.darkModeToggle) elements.darkModeToggle.textContent = '☀️';
-    }
+    authorPreview.addEventListener('mouseleave', () => {
+        authorPreview.style.display = 'none';
+    });
 
     // Menu functionality
     const menuToggle = document.getElementById('menu-toggle');
@@ -548,51 +550,53 @@ authorPreview.addEventListener('mouseleave', () => {
         });
     }
 
-   // Function to update menu options
+    // Function to update menu options
     function updateMenuOptions() {
-      if (document.body.classList.contains('dark-mode')) {
-        if (!document.getElementById('disable-darkening')) {
-          const disableDarkeningOption = document.createElement('a');
-          disableDarkeningOption.href = '#';
-          disableDarkeningOption.id = 'disable-darkening';
-          disableDarkeningOption.className = 'menu-button';
-          disableDarkeningOption.textContent = 'Enable Mouse Darkening';
-          dropdownMenu.appendChild(disableDarkeningOption);
-  
-          const highContrastOption = document.createElement('a');
-          highContrastOption.href = '#';
-          highContrastOption.id = 'high-contrast-mode';
-          highContrastOption.className = 'menu-button';
-          highContrastOption.textContent = 'Normal Contrast Mode';
-          dropdownMenu.appendChild(highContrastOption);
+        if (document.body.classList.contains('dark-mode')) {
+            if (!document.getElementById('disable-darkening')) {
+                const disableDarkeningOption = document.createElement('a');
+                disableDarkeningOption.href = '#';
+                disableDarkeningOption.id = 'disable-darkening';
+                disableDarkeningOption.className = 'menu-button';
+                disableDarkeningOption.textContent = document.body.classList.contains('disable-darkening') ? 'Enable Mouse Darkening' : 'Disable Mouse Darkening';
+                dropdownMenu.appendChild(disableDarkeningOption);
+
+                const highContrastOption = document.createElement('a');
+                highContrastOption.href = '#';
+                highContrastOption.id = 'high-contrast-mode';
+                highContrastOption.className = 'menu-button';
+                highContrastOption.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
+                dropdownMenu.appendChild(highContrastOption);
+            }
+        } else {
+            const disableDarkeningOption = document.getElementById('disable-darkening');
+            const highContrastOption = document.getElementById('high-contrast-mode');
+            if (disableDarkeningOption) dropdownMenu.removeChild(disableDarkeningOption);
+            if (highContrastOption) dropdownMenu.removeChild(highContrastOption);
         }
-      } else {
-        const disableDarkeningOption = document.getElementById('disable-darkening');
-        const highContrastOption = document.getElementById('high-contrast-mode');
-        if (disableDarkeningOption) dropdownMenu.removeChild(disableDarkeningOption);
-        if (highContrastOption) dropdownMenu.removeChild(highContrastOption);
-      }
     }
 
-   // Event listeners for new options
-   dropdownMenu.addEventListener('click', function(e) {
-    if (e.target.id === 'disable-darkening') {
-      document.body.classList.toggle('disable-darkening');
-      e.target.textContent = document.body.classList.contains('disable-darkening') ? 'Enable Mouse Darkening' : 'Disable Mouse Darkening';
-    } else if (e.target.id === 'high-contrast-mode') {
-      document.body.classList.toggle('high-contrast');
-      e.target.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
-    }
-  });
-  // Remove unwanted tooltip on the right
-const styleElement = document.createElement('style');
-styleElement.textContent = `
-    .edit-part-name::after {
-        content: none;
-    }
-`;
-document.head.appendChild(styleElement);
-    
+    // Event listeners for new options
+    dropdownMenu.addEventListener('click', function(e) {
+        if (e.target.id === 'disable-darkening') {
+            document.body.classList.toggle('disable-darkening');
+            e.target.textContent = document.body.classList.contains('disable-darkening') ? 'Enable Mouse Darkening' : 'Disable Mouse Darkening';
+            savePreferences();
+        } else if (e.target.id === 'high-contrast-mode') {
+            document.body.classList.toggle('high-contrast');
+            e.target.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
+            savePreferences();
+        }
+    });
+
+    // Remove unwanted tooltip on the right
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        .edit-part-name::after {
+            content: none;
+        }
+    `;
+    document.head.appendChild(styleElement);
 
     // Load and save preferences
     function loadPreferences() {
@@ -605,6 +609,7 @@ document.head.appendChild(styleElement);
         if (highContrast) {
             document.body.classList.add('high-contrast');
         }
+        updateMenuOptions();
     }
 
     function savePreferences() {
@@ -613,6 +618,15 @@ document.head.appendChild(styleElement);
     }
 
     // Initial call to set up menu and load preferences
-    updateMenuOptions();
     loadPreferences();
+    loadFromLocalStorage();
+    updateStoryStructure();
+    updateStory();
+
+    // Check for saved dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+        if (elements.darkModeToggle) elements.darkModeToggle.textContent = '☀️';
+        updateMenuOptions();
+    }
 });
