@@ -548,44 +548,51 @@ authorPreview.addEventListener('mouseleave', () => {
         });
     }
 
-    // Function to update menu options
+   // Function to update menu options
     function updateMenuOptions() {
-        if (document.body.classList.contains('dark-mode')) {
-            if (!document.getElementById('disable-darkening')) {
-                const disableDarkeningOption = document.createElement('a');
-                disableDarkeningOption.href = '#';
-                disableDarkeningOption.id = 'disable-darkening';
-                disableDarkeningOption.className = 'menu-button';
-                disableDarkeningOption.textContent = 'Disable Mouse Darkening';
-                dropdownMenu.appendChild(disableDarkeningOption);
-
-                const highContrastOption = document.createElement('a');
-                highContrastOption.href = '#';
-                highContrastOption.id = 'high-contrast-mode';
-                highContrastOption.className = 'menu-button';
-                highContrastOption.textContent = 'High Contrast Mode';
-                dropdownMenu.appendChild(highContrastOption);
-            }
-        } else {
-            const disableDarkeningOption = document.getElementById('disable-darkening');
-            const highContrastOption = document.getElementById('high-contrast-mode');
-            if (disableDarkeningOption) dropdownMenu.removeChild(disableDarkeningOption);
-            if (highContrastOption) dropdownMenu.removeChild(highContrastOption);
+      if (document.body.classList.contains('dark-mode')) {
+        if (!document.getElementById('disable-darkening')) {
+          const disableDarkeningOption = document.createElement('a');
+          disableDarkeningOption.href = '#';
+          disableDarkeningOption.id = 'disable-darkening';
+          disableDarkeningOption.className = 'menu-button';
+          disableDarkeningOption.textContent = 'Enable Mouse Darkening';
+          dropdownMenu.appendChild(disableDarkeningOption);
+  
+          const highContrastOption = document.createElement('a');
+          highContrastOption.href = '#';
+          highContrastOption.id = 'high-contrast-mode';
+          highContrastOption.className = 'menu-button';
+          highContrastOption.textContent = 'Normal Contrast Mode';
+          dropdownMenu.appendChild(highContrastOption);
         }
+      } else {
+        const disableDarkeningOption = document.getElementById('disable-darkening');
+        const highContrastOption = document.getElementById('high-contrast-mode');
+        if (disableDarkeningOption) dropdownMenu.removeChild(disableDarkeningOption);
+        if (highContrastOption) dropdownMenu.removeChild(highContrastOption);
+      }
     }
 
-    // Event listeners for new options
-    if (dropdownMenu) {
-        dropdownMenu.addEventListener('click', function(e) {
-            if (e.target.id === 'disable-darkening') {
-                document.body.classList.toggle('disable-darkening');
-                savePreferences();
-            } else if (e.target.id === 'high-contrast-mode') {
-                document.body.classList.toggle('high-contrast');
-                savePreferences();
-            }
-        });
+   // Event listeners for new options
+   dropdownMenu.addEventListener('click', function(e) {
+    if (e.target.id === 'disable-darkening') {
+      document.body.classList.toggle('disable-darkening');
+      e.target.textContent = document.body.classList.contains('disable-darkening') ? 'Enable Mouse Darkening' : 'Disable Mouse Darkening';
+    } else if (e.target.id === 'high-contrast-mode') {
+      document.body.classList.toggle('high-contrast');
+      e.target.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
     }
+  });
+  // Remove unwanted tooltip on the right
+const styleElement = document.createElement('style');
+styleElement.textContent = `
+    .edit-part-name::after {
+        content: none;
+    }
+`;
+document.head.appendChild(styleElement);
+    
 
     // Load and save preferences
     function loadPreferences() {
