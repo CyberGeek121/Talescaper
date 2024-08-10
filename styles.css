@@ -953,6 +953,11 @@ a{
 
 .tooltip-btn:hover svg {
     opacity: 1; /* Full visibility on hover */
+    transform: translateY(1px);
+}
+.tooltip-btn:active svg {
+  opacity: 1; /* Full visibility on hover */
+  transform: translateY(-0.2px);
 }
   .tooltip-btn {
     position: relative;
