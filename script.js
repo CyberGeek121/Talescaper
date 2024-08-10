@@ -630,3 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMenuOptions();
     }
 });
+document.querySelectorAll('.tooltip-btn').forEach(btn => {
+    btn.removeAttribute('title'); // Remove the default title attribute
+});
+feather.replace();
