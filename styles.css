@@ -939,3 +939,110 @@ p {
                 right: auto;
             }
         }
+a{
+  text-decoration: none;
+  color: #22374f;
+  }
+  .tooltip-btn svg {
+    width: 22px;  /* Increased size */
+    height: 22px; /* Increased size */
+    fill: #555;   /* Subtle color */
+    background-color: transparent; /* Ensure no background */
+    opacity: 0.8; /* Slightly increased opacity */
+}
+
+.tooltip-btn:hover svg {
+    opacity: 1; /* Full visibility on hover */
+}
+  .tooltip-btn {
+    position: relative;
+    cursor: pointer;
+    font-size: 18px; /* Adjust size as needed */
+    color: inherit;  /* Inherit the color from parent */
+    background-color: transparent; /* Ensure no background */
+  }
+
+.tooltip-btn::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.tooltip-btn:hover::before {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.tooltip-btn:hover::after {
+    visibility: visible;
+    opacity: 1;
+}
+.undo-tooltip::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 30%; /* Adjust this value to move tooltip left */
+  transform: translateX(-30%); /* Adjust this value to align the tooltip correctly */
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.undo-tooltip:hover::before {
+  visibility: visible;
+  opacity: 1;
+}
+
+.undo-tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 30%; /* Match this with the left value of ::before */
+  transform: translateX(-30%); /* Match this with the transform value of ::before */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #333 transparent;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+}
+
+.undo-tooltip:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
