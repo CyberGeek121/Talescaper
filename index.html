@@ -8,6 +8,7 @@
     <title>TaleScaper</title>
     <link rel="icon" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="script.js" defer></script>
     <style>
     </style>
@@ -20,7 +21,7 @@
                 <div class="content">
                     <header>
                         <div class="title-container">
-                            <h1>TaleScaper<a class="reload" href="Simulation.html" style="color: #2980b9; text-decoration: none;" title="Click here for Fun Simulation">.</a></h1>
+                            <h1>TaleScaper<a href="Simulation.html" data-tooltip="Click here for a Fun Simulation" class="tooltip-btn">.</a></h1>
                             <div class="author-container">
                                 <a href="#" class="author" id="author-link">~by Piyush Bhardwaj</a>
                                 <div class="author-preview" id="author-preview">
@@ -52,9 +53,17 @@
                     <main>
                         <div id="creator-mode">
                                 <h2>
-                                <span id="undo-btn" title="Undo ('CTRL+Z')">⬅</span>
+                                    <span id="undo-btn" data-tooltip="Undo ('CTRL+Z')" class="tooltip-btn undo-tooltip">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
+                                            <path fill="currentColor" d="M9 11h8a1 1 0 110 2H9.41l2.3 2.29a1 1 0 11-1.42 1.42l-4-4a1 1 0 010-1.42l4-4a1 1 0 011.42 1.42L9.41 11z"></path>
+                                        </svg>
+                                    </span>
                                 Story Creator Mode
-                                <span id="redo-btn" title="Redo ('CTRL+V')">➡</span>
+                                <span id="redo-btn" data-tooltip="Redo ('CTRL+Y')" class="tooltip-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="currentColor" d="M15 11H7a1 1 0 000 2h7.59l-2.3 2.29a1 1 0 001.42 1.42l4-4a1 1 0 000-1.42l-4-4a1 1 0 00-1.42 1.42L15.59 11z"></path>
+                                    </svg>
+                                </span>
                                 </h2>
                             <div id="story-structure">
                                 <!-- Story parts will be dynamically added here -->
@@ -66,7 +75,7 @@
                             <h2>Story Player Mode</h2>
                             <div class="player-controls">
                                 <span id="toggle-progress">Show Progress</span>
-                                <button id="replay-story" title="Replay Story">↺</button>
+                                <button id="replay-story" data-tooltip="Replay Story" class="tooltip-btn">↺</button>
                             </div>
                             <div id="main-container">
                                 <div id="story-container">
