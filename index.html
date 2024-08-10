@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Piyush Bhardwaj">
+    <meta name="copyright" content="Talescaper. All Rights Reserved.">
     <title>TaleScaper</title>
-    <link rel="icon" href="images.png">
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
+    <style>
+    </style>
 </head>
 <body>
     <div class="parallax">
@@ -48,7 +51,11 @@
                     
                     <main>
                         <div id="creator-mode">
-                            <h2>Story Creator Mode</h2>
+                                <h2>
+                                <span id="undo-btn" title="Undo last action">⬅</span>
+                                Story Creator Mode
+                                <span id="redo-btn" title="Redo last undone action">➡</span>
+                                </h2>
                             <div id="story-structure">
                                 <!-- Story parts will be dynamically added here -->
                             </div>
@@ -102,5 +109,6 @@
             <button class="remove-part-btn btn">Remove Part</button>
         </div>
     </template>
+    </div>
 </body>
 </html>
