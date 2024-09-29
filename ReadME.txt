@@ -2,7 +2,7 @@ About Me:
 I’m Piyush Bhardwaj, A 15-year-old lad from New Delhi who just got into coding. I’ve known basic HTML and CSS since I was 12 but I started it taking seriously just recently. Web Development is just one of my hobbies. I am a self-proclaimed economist and am really into Politics, Geo-Politics, Technology, Science and Artificial Intelligence.
 
 Acknowledgement:
-Being an Artificial Intelligence enthusiast, pretty much everything on this page is done with the help of AI LLMS. And I made this page just 1-2 days before my Maths exams. 
+Being an Artificial Intelligence enthusiast, pretty much everything on this page was done with the help of AI LLMS. And I made this page just 1-2 days before my Maths exams. 
 
 Contact me @: piyushbhardwaj362009@gmail.com
 	      www.github.com/cybergeek121
