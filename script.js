@@ -1,5 +1,7 @@
 // Improved Story Creator Script with Enhanced Undo Functionality and Bug Fixes
 
+
+
 document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
     const elements = {
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const savedStoryParts = localStorage.getItem('storyParts');
             const savedCurrentPart = localStorage.getItem('currentPart');
             const savedHistory = localStorage.getItem('history');
+           
 
             if (savedStoryParts) storyParts = JSON.parse(savedStoryParts);
             if (savedCurrentPart) currentPart = parseInt(savedCurrentPart, 10);
@@ -429,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!elements.historyText) return;
         elements.historyText.innerHTML = history.map((h, index) => `
             <p>
-                <strong>Part ${index + 1}:</strong> ${storyParts[h.part].text}<br>
+                <strong>Interaction ${index + 1}:</strong> ${storyParts[h.part].text}<br>
                 <em>Choice: ${storyParts[h.part].choices[h.choice].text}</em>
             </p>
         `).join('');
