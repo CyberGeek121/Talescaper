@@ -387,6 +387,36 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMenuOptions();
     }
 
+    // Theme Management
+    function setTheme(themeName) {
+        // Remove all theme classes
+        document.body.classList.remove('theme-ocean', 'theme-forest', 'theme-sunset');
+        
+        // Apply new theme
+        if (themeName && themeName !== 'default' && themeName !== 'dark') {
+            document.body.classList.add(`theme-${themeName}`);
+            localStorage.setItem('theme', themeName);
+        } else if (themeName === 'dark') {
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            localStorage.setItem('darkMode', 'true');
+            if (elements.darkModeToggle) elements.darkModeToggle.textContent = '☀️';
+        } else {
+            document.body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'default');
+            localStorage.setItem('darkMode', 'false');
+            if (elements.darkModeToggle) elements.darkModeToggle.textContent = '🌙';
+        }
+        updateMenuOptions();
+    }
+
+    function loadTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+    }
+
     // Story Playback Functions
     function updateStory() {
         if (!elements.storyText || !elements.choicesContainer) return;
@@ -589,6 +619,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('high-contrast');
             e.target.textContent = document.body.classList.contains('high-contrast') ? 'Normal Contrast Mode' : 'High Contrast Mode';
             savePreferences();
+        } else if (e.target.classList.contains('theme-option')) {
+            e.preventDefault();
+            const themeName = e.target.dataset.theme;
+            setTheme(themeName);
         }
     });
 
@@ -621,13 +655,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initial call to set up menu and load preferences
+    loadTheme();
     loadPreferences();
     loadFromLocalStorage();
     updateStoryStructure();
     updateStory();
 
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
+    // Check for saved dark mode preference (only if no theme is set)
+    if (!localStorage.getItem('theme') && localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
         if (elements.darkModeToggle) elements.darkModeToggle.textContent = '☀️';
         updateMenuOptions();
