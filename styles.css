@@ -758,6 +758,20 @@ p {
   border-top: 1px solid var(--background-modifier-accent);
 }
 
+.theme-selector .theme-option {
+  display: block;
+  padding: 6px 12px;
+  margin: 2px 0;
+  font-size: 0.85em;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.theme-selector .theme-option:hover {
+  background-color: var(--background-modifier-accent);
+  transform: translateX(3px);
+}
+
 .theme-label {
   display: block;
   font-size: 0.75em;
