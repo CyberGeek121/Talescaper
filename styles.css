@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+/* Theme Variables */
 :root {
   --background-primary: #f0f2f5;
   --background-secondary: #ffffff;
@@ -13,11 +14,15 @@
   --progress-bar-color: #caced6;
   --background-modifier-accent: rgba(79,84,92,0.16);
   --scrollbar-thin-thumb: rgba(79,84,92,0.3);
-  --scrollbar-thin-track: transparent;
-  --scrollbar-auto-thumb: rgba(79,84,92,0.3);
-  --scrollbar-auto-track: rgba(0,0,0,0.1);
+  --scrollbar-auto-track: transparent;
+  --button-background: rgba(57, 124, 206, 0.719);
+  --button-hover: rgba(63, 115, 179, 0.859);
+  --parallax-gradient: linear-gradient(135deg, #2c3e50, #3498db, #2980b9);
+  --content-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.2);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Dark Theme */
 .dark-mode {
   --background-primary: #202225;
   --background-secondary: #2f3136;
@@ -31,8 +36,101 @@
   --progress-bar-color: #4f545c;
   --background-modifier-accent: rgba(79,84,92,0.32);
   --scrollbar-thin-thumb: rgba(79,84,92,0.5);
-  --scrollbar-auto-thumb: rgba(79,84,92,0.5);
   --scrollbar-auto-track: rgba(0,0,0,0.3);
+  --button-background: rgba(97, 95, 95, 0.566);
+  --button-hover: rgba(97, 95, 95, 0.866);
+  --parallax-gradient: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  --content-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.4);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Ocean Theme */
+.theme-ocean {
+  --background-primary: #e0f7fa;
+  --background-secondary: #b2ebf2;
+  --text-normal: #006064;
+  --text-muted: #00838f;
+  --interactive-normal: #00acc1;
+  --interactive-hover: #0097a7;
+  --interactive-active: #006064;
+  --brand-experiment: #00bcd4;
+  --brand-experiment-560: #00acc1;
+  --progress-bar-color: #4dd0e1;
+  --background-modifier-accent: rgba(0, 188, 212, 0.2);
+  --scrollbar-thin-thumb: rgba(0, 188, 212, 0.5);
+  --scrollbar-auto-track: rgba(0, 0, 0, 0.1);
+  --button-background: rgba(0, 188, 212, 0.7);
+  --button-hover: rgba(0, 172, 193, 0.85);
+  --parallax-gradient: linear-gradient(135deg, #006064, #00838f, #00acc1);
+  --content-shadow: 0 10px 30px rgba(0, 96, 100, 0.15), 0 1px 8px rgba(0, 96, 100, 0.2);
+  --card-shadow: 0 4px 6px rgba(0, 96, 100, 0.1), 0 1px 3px rgba(0, 96, 100, 0.15);
+}
+
+/* Forest Theme */
+.theme-forest {
+  --background-primary: #e8f5e9;
+  --background-secondary: #c8e6c9;
+  --text-normal: #1b5e20;
+  --text-muted: #2e7d32;
+  --interactive-normal: #388e3c;
+  --interactive-hover: #43a047;
+  --interactive-active: #1b5e20;
+  --brand-experiment: #4caf50;
+  --brand-experiment-560: #43a047;
+  --progress-bar-color: #81c784;
+  --background-modifier-accent: rgba(76, 175, 80, 0.2);
+  --scrollbar-thin-thumb: rgba(76, 175, 80, 0.5);
+  --scrollbar-auto-track: rgba(0, 0, 0, 0.1);
+  --button-background: rgba(76, 175, 80, 0.7);
+  --button-hover: rgba(67, 160, 71, 0.85);
+  --parallax-gradient: linear-gradient(135deg, #1b5e20, #2e7d32, #388e3c);
+  --content-shadow: 0 10px 30px rgba(27, 94, 32, 0.15), 0 1px 8px rgba(27, 94, 32, 0.2);
+  --card-shadow: 0 4px 6px rgba(27, 94, 32, 0.1), 0 1px 3px rgba(27, 94, 32, 0.15);
+}
+
+/* Sunset Theme */
+.theme-sunset {
+  --background-primary: #fff3e0;
+  --background-secondary: #ffe0b2;
+  --text-normal: #e65100;
+  --text-muted: #ef6c00;
+  --interactive-normal: #f57c00;
+  --interactive-hover: #fb8c00;
+  --interactive-active: #e65100;
+  --brand-experiment: #ff9800;
+  --brand-experiment-560: #fb8c00;
+  --progress-bar-color: #ffb74d;
+  --background-modifier-accent: rgba(255, 152, 0, 0.2);
+  --scrollbar-thin-thumb: rgba(255, 152, 0, 0.5);
+  --scrollbar-auto-track: rgba(0, 0, 0, 0.1);
+  --button-background: rgba(255, 152, 0, 0.7);
+  --button-hover: rgba(251, 140, 0, 0.85);
+  --parallax-gradient: linear-gradient(135deg, #e65100, #ef6c00, #f57c00);
+  --content-shadow: 0 10px 30px rgba(230, 81, 0, 0.15), 0 1px 8px rgba(230, 81, 0, 0.2);
+  --card-shadow: 0 4px 6px rgba(230, 81, 0, 0.1), 0 1px 3px rgba(230, 81, 0, 0.15);
+}
+
+/* High Contrast Theme */
+.high-contrast.dark-mode {
+  --background-primary: #000000;
+  --background-secondary: #1a1a1a;
+  --text-normal: #ffffff;
+  --text-muted: #cccccc;
+  --interactive-normal: #564b4b;
+  --interactive-hover: #f0f0f0;
+  --interactive-active: #e0e0e0;
+  --brand-experiment: #4a90e2;
+  --brand-experiment-560: #3a75b5;
+  --progress-bar-color: #ffffff;
+  --background-modifier-accent: rgba(255,255,255,0.2);
+  --scrollbar-thin-thumb: rgba(255,255,255,0.3);
+  --scrollbar-auto-track: rgba(0,0,0,0.3);
+  --button-background: #020e1c;
+  --button-text: #ffffff;
+  --button-hover-background: #24282c;
+  --parallax-gradient: none;
+  --content-shadow: 0 10px 30px rgba(255, 255, 255, 0.1), 0 1px 8px rgba(255, 255, 255, 0.2);
+  --card-shadow: 0 4px 6px rgba(255, 255, 255, 0.1), 0 1px 3px rgba(255, 255, 255, 0.2);
 }
 
 body, html {
@@ -47,7 +145,7 @@ body, html {
   overflow: hidden;
 }
 body {
-  margin-bottom: 10px; /* Decrease the margin at the bottom */
+  margin-bottom: 10px;
 }
 
 /* Custom Scrollbar */
@@ -56,7 +154,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-auto-thumb);
+  background-color: var(--scrollbar-thin-thumb);
   border-radius: 4px;
 }
 
@@ -80,15 +178,10 @@ body {
 
 .parallax__layer--back {
   transform: translateZ(-1px) scale(2);
-  background: linear-gradient(135deg, #2c3e50, #3498db, #2980b9);
+  background: var(--parallax-gradient);
   height: 200%;
-  width: 200%; /* Increased width to cover entire viewport */
-  left: -50%; /* Offset to center the background */
-}
-
-
-.dark-mode .parallax__layer--back {
-  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  width: 200%;
+  left: -50%;
 }
 
 .content-wrapper {
@@ -108,18 +201,17 @@ body {
   max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.9); /* Make it slightly translucent in light mode */
+  background-color: var(--background-secondary);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--content-shadow);
   transition: background-color 0.3s, box-shadow 0.3s;
   overflow: hidden;
   position: relative;
 }
 
-
 .dark-mode .content {
-  background-color: var(--background-secondary); /* Keep it solid in dark mode */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.4);
+  background-color: var(--background-secondary);
+  box-shadow: var(--content-shadow);
 }
 
 .content::before {
@@ -189,7 +281,7 @@ body {
 .btn {
   padding: 8px 16px;
   margin: 5px;
-  background-color: rgba(57, 124, 206, 0.719);
+  background-color: var(--button-background);
   color: #ffffff;
   border: none;
   border-radius: 20px;
@@ -201,7 +293,7 @@ body {
 }
 
 .btn:hover {
-  background-color: rgba(63, 115, 179, 0.859);
+  background-color: var(--button-hover);
   padding-left: 17px;
   padding-right: 17px;
   transition: all 0.25s;
@@ -209,18 +301,6 @@ body {
 
 .btn:active {
   transform: translateY(1px);
-}
-
-.dark-mode .btn {
-  background-color: rgba(97, 95, 95, 0.566);
-}
-
-.dark-mode .btn:hover {
-  background-color: rgba(97, 95, 95, 0.866);
-}
-
-.dark-mode .btn:active {
-  background-color: rgba(97, 95, 95, 0.478);
 }
 
 #mode-toggle, #reset-btn, #save-btn, #load-btn {
@@ -400,7 +480,7 @@ p {
 #dark-mode-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 80px;
   background: none;
   border: none;
   font-size: 24px;
@@ -468,6 +548,48 @@ p {
   .choice-btn {
     font-size: 0.9em;
     padding: 8px 12px;
+  }
+  
+  .controls {
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    margin: 3px;
+    padding: 6px 12px;
+    font-size: 0.85em;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  #main-container {
+    flex-direction: column;
+  }
+  
+  #story-container, #history-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-container {
+    top: 5px;
+    right: 5px;
+  }
+  
+  .dark-mode-toggle {
+    top: 10px;
+    right: 10px;
+  }
+  
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .dropdown-menu {
+    min-width: 180px;
   }
 }
 .part-name {
@@ -611,7 +733,7 @@ p {
   position: absolute;
   right: 0;
   background-color: var(--background-secondary);
-  min-width: 160px;
+  min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 8px;
@@ -629,6 +751,20 @@ p {
 .dropdown-menu a:hover {
   background-color: var(--background-modifier-accent);
   transform: translateX(5px);
+}
+
+.theme-selector {
+  padding: 8px 16px;
+  border-top: 1px solid var(--background-modifier-accent);
+}
+
+.theme-label {
+  display: block;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .menu-button {
